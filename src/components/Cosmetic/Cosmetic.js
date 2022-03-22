@@ -1,11 +1,14 @@
 import React from "react";
+import { addToDb } from "../../utilities/fakedb";
 import "./Cosmetic.css";
 const Cosmetic = (props) => {
   const { name, price, id } = props.cosmetic;
-  const addToCart = (id) =>{
-console.log(id);
-  }
-  const addToCartWithParam = () => addToCart(id);
+  const addToCart = (id) => {
+    // console.log(id);
+    // localStorage.setItem(id, 1);
+    addToDb(id)
+  };
+  //const addToCartWithParam = () => addToCart(id);
   return (
     <div className="product shadow rounded ">
       <h2>Buy this: {name}</h2>
@@ -13,8 +16,14 @@ console.log(id);
       <p className="fw-bold">
         <small>It has id: {id}</small>
       </p>
-      <button onClick={addToCartWithParam} className="btn btn-outline-warning">Add to Cart</button>
-      <button onClick={ () => addToCart(id)} className="btn btn-outline-success my-3 mx-2">Add to Cart ShortCurt</button>
+      {/* <button onClick={addToCartWithParam} className="btn btn-outline-warning">Add to Cart</button> */}
+      {/* ShortCurt */}
+      <button
+        onClick={() => addToCart(id)}
+        className="btn btn-outline-warning "
+      >
+        Add to Cart{" "}
+      </button>
     </div>
   );
 };
