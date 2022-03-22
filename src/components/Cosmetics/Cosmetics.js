@@ -1,6 +1,7 @@
 import React from "react";
 import add from "../../utilities/add";
 import { division, multiply } from "../../utilities/calculate";
+import Cosmetic from "../Cosmetic/Cosmetic";
 
 const Cosmetics = () => {
   const first = 55;
@@ -8,12 +9,22 @@ const Cosmetics = () => {
   const summetion = add(first, second);
   const divide = division(first, second);
   const multiplication = multiply(first, second);
+  const cosmeticsO = [
+    { id: 1, name: "Alta", price: 100 },
+    { id: 2, name: "Alita", price: 200 },
+    { id: 3, name: "Blta", price: 300 },
+    { id: 4, name: "Palta", price: 500 },
+    { id: 5, name: "Calta", price: 400 },
+  ];
   return (
     <div>
       <h1>This is BK</h1>
       <h3>Addition: {summetion}</h3>
       <h3>Division: {divide}</h3>
       <h3>Multiplication: {multiplication}</h3>
+      {cosmeticsO.map((cosmetic) => (
+        <Cosmetic key={cosmetic.id} cosmetic={cosmetic}></Cosmetic>
+      ))}
     </div>
   );
 };
