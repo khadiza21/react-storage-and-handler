@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import add from "../../utilities/add";
-import { division, multiply } from "../../utilities/calculate";
+import { division, getTotal, multiply } from "../../utilities/calculate";
 import Cosmetic from "../Cosmetic/Cosmetic";
 import "./Cosmetics.css";
 
@@ -24,12 +24,15 @@ const Cosmetics = () => {
       .then((res) => res.json())
       .then((data) => setCosmetics(data));
   }, []);
+
+  const totalo = getTotal(cosmeticsOP);
   return (
     <div>
       <h1>This is BK</h1>
       <h3>Addition: {summetion}</h3>
       <h3>Division: {divide}</h3>
       <h3>Multiplication: {multiplication}</h3>
+      <h2>Total Money : {totalo}</h2>
       <div className="products container my-5">
         {cosmeticsOP.map((cosmetic) => (
           <Cosmetic key={cosmetic.id} cosmetic={cosmetic}></Cosmetic>
